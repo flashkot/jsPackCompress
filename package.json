@@ -9,12 +9,10 @@
   "scripts": {
     "test": "node --test ./test.js",
     "wasm2js": "node zopfli/scripts/wasm2js.js zopfli/zopfli.wasm zopfli/zopfli.wasm.js",
-    "build": "npx rollup -c zopfli/rollup.config.js"
+    "build": "npx rollup -c"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",
-    "@rollup/plugin-commonjs": "^28.0.3",
-    "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
     "eslint": "^9.24.0",
     "globals": "^16.0.0",
