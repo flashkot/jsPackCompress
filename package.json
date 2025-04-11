@@ -1,0 +1,12 @@
+{
+  "name": "jspackcompress",
+  "version": "0.0.1",
+  "description": "Packing JS into self-extracting HTML file",
+  "license": "MIT",
+  "author": "flashkot",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
