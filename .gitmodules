@@ -1,0 +1,3 @@
+[submodule "zopfli/ect"]
+	path = zopfli/ect
+	url = https://github.com/fhanau/Efficient-Compression-Tool.git
