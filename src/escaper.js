@@ -31,8 +31,6 @@ export function binEscape(data) {
   let counts = Array(256).fill(0);
   data.forEach((b) => counts[b]++);
 
-  let origEscSize = counts[subst92] + counts[subst13];
-
   // lets find out two least used bytes in our data
   let sortedCounts = counts
     .map((a, i) => [a, i])
@@ -66,8 +64,6 @@ export function binEscape(data) {
       subst92 = sortedCounts[0][1];
     }
   }
-
-  let newEscSize = counts[subst92] + counts[subst13];
 
   let payload = [];
   let mapping = Array(256).fill(0);
