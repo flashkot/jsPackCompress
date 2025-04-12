@@ -6,10 +6,17 @@
   "author": "flashkot",
   "type": "module",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "bin/cli.js"
+  ],
   "scripts": {
     "test": "node --test ./test.js",
     "wasm2js": "node zopfli/scripts/wasm2js.js zopfli/zopfli.wasm zopfli/zopfli.wasm.js",
     "build": "npx rollup -c"
+  },
+  "bin": {
+    "jspackcompress": "bin/cli.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",
@@ -18,5 +25,9 @@
     "globals": "^16.0.0",
     "google-closure-compiler": "^20240317.0.0",
     "rollup": "^4.39.0"
+  },
+  "dependencies": {
+    "commander": "^13.1.0",
+    "glob": "^11.0.1"
   }
 }
