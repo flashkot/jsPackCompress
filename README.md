@@ -158,7 +158,7 @@ on the size of the payload. If it is less than 100KiB then
 [smaller decoder](src/unpacker/small.js) is used. If it is more than 100KiB then
 it uses [bigger decoder](src/unpacker/small_lut.js).
 
-The bigger one uses Look Up Table (it needs to be filled first) for faster
+The bigger one uses Look Up Table (needs to be filled first) for faster
 decoding. Which is especially noticeable when packing several megabytes. But it
 becomes slower on small payloads (especially when look up table is bigger than
 payload itself)
@@ -286,7 +286,7 @@ another encoding was needed for the compressed data.
 I knew that [jsExe](https://www.pouet.net/prod.php?which=59298) exists. And
 that would be an ideal solution. But unfortunately modern browsers security
 restricts access to image pixels when page is opened with `file://` protocol.
-I've searched what demoscene people use these days and found
+I've searched what else is used on demoscene these days and found
 [fetchcrunch](https://github.com/subzey/fetchcrunch) - modern solution but with
 the same flaw. This time it is not allowed to use `fetch` from local files.
 
@@ -303,7 +303,7 @@ problematic bytes.
 First is the byte `0x0D` (`\r` character), which is converted to `\n`
 during HTML parsing. This meant I had to escape both `\r` and `\\`.
 
-Then there is 9 bytes for which `charCodeAt` returns incorrect values:
+Then there are 9 bytes for which `charCodeAt` returns incorrect values:
 
 ```js
 {
@@ -319,14 +319,14 @@ Then there is 9 bytes for which `charCodeAt` returns incorrect values:
 }
 ```
 
-Then I moved the compressed data to HTML comments at the end of the file,
+I moved the compressed data to HTML comments at the end of the file,
 avoiding the need to escape quotes and newlines. However, I still had to
-escape `-->`. In addition browser doesn't try to render all this bytes as page
-text (which was another source of stutter to page loading).
+escape `-->`. Bonus: browser doesn't try to render all this bytes as page
+text (which was another source of stutter to page loading with existing tools).
 
 I wrote function to escape data. This function also checks if there are any less
-common bytes than `\\` and `\r`. And if there is it swaps them to save some
-bytes on escaping and adds them to the mapping.
+common bytes than `\\` and `\r`. And if there is it swaps them to save on
+escaping. This is also added to byte mapping.
 
 Finally the decoding process looks like this:
 
