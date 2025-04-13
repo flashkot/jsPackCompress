@@ -2,6 +2,12 @@
   "name": "jspackcompress",
   "version": "0.0.1",
   "description": "Packing JS into self-extracting HTML file",
+  "keywords": [
+    "compression",
+    "self-extracting",
+    "html-packaging"
+  ],
+  "repository": "github:flashkot/jsPackCompress",
   "license": "MIT",
   "author": "flashkot",
   "type": "module",
