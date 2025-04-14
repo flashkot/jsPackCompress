@@ -94,7 +94,8 @@ variable in your code, or if you want to save some extra bytes, you can change
 name of this variable with `--arg-name`. Next section describes how to use this
 argument to get files content.
 
-> **NOTE**: no checks are made that value provided with `--arg-name` is valid
+> [!NOTE]
+> No checks are made that value provided with `--arg-name` is valid
 > variable name in JavaScript.
 
 ### `--getter`
@@ -218,7 +219,8 @@ let result = await pack({
 });
 ```
 
-> **Note**: `pack` function is asynchronous so use `await` or `.then()`.
+> [!NOTE]
+> `pack` function is asynchronous so use `await` or `.then()`.
 
 There are two extras in config object when compared to cli:
 
@@ -245,7 +247,8 @@ Returned value of the `pack` function will be an object structured like this:
 
 ## How to build
 
-**NOTE**: this repo uses git submodules. Use `--recursive` option while cloning.
+> [!NOTE]
+> this repo uses git submodules. Use `--recursive` option while cloning.
 
 JavaScript part of the package can be build by executing `npm run build` command.
 
