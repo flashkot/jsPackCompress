@@ -67,9 +67,9 @@ Options:
                              `String`, `Blob`, or `BlobURL`. Use `all` to have
                              all types as properties of the wrapper argument
                              (default: "all")
-  -s, --small-decoder        Always use small decoder
-  -u, --universal-decoder    Use universal decoder
-  -c, --compact-html         Generate compact HTML
+  -s, --small-decoder        always use small decoder
+  -u, --universal-decoder    use universal decoder
+  -c, --compact-html         generate compact HTML
   -e, --extra-head <string>  additional string to include in the <HEAD> section
   -b, --extra-body <string>  additional string to include in the <BODY> section
   -V, --version              output the version number
@@ -210,7 +210,7 @@ want to put packed file on the web, you must properly setup the server too.
 If server configuration can't be changed, you can use this option to generate
 file with universal decoder. This will add around 200 bytes to wrapper HTML.
 
-Waht it does is check if file was opened not from `file:` protocol. In that case
+What it does is check if file was opened not from `file:` protocol. In that case
 it will `fetch` file again (hopefully this time browwser will use cached
 version) and then decode its content instead of the embeded string.
 
