@@ -15,7 +15,7 @@ function compareArrays(a, b) {
   }
 
   for (let i = 0; i < a.length; i++) {
-    if (b[i] != a[i]) {
+    if (b[i] !== a[i]) {
       throw new Error(`Different byte at ${i}. ${b[i]} != ${a[i]}.`);
     }
   }
@@ -71,6 +71,14 @@ test("Escape and unescape", () => {
   compareArrays(testData, res);
 
   res = bigDec(testStr, testEscaped.decodeMap);
+  compareArrays(testData, res);
+
+  testEscaped.payload.charCodeAt = (i) => testEscaped.payload[i];
+
+  res = smallDec(testEscaped.payload, testEscaped.swapMap);
+  compareArrays(testData, res);
+
+  res = bigDec(testEscaped.payload, testEscaped.swapMap);
   compareArrays(testData, res);
 });
 
