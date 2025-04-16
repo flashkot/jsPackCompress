@@ -54,29 +54,23 @@ test("Escape and unescape", () => {
   });
 
   let smallDec = new Function(
-    "testStr",
-    "return " +
-      DECODER_SMALL.replace(
-        "$PLACEHOLDER_TEXTDATA_LOCATION",
-        "testStr"
-      ).replace("$PLACEHOLDER_MAPPING", JSON.stringify(testEscaped.decodeMap))
+    "b",
+    "u",
+    DECODER_SMALL.replace("$PLACEHOLDER_MAPPING", "u")
   );
 
   let bigDec = new Function(
-    "testStr",
-    "return " +
-      DECODER_BIG.replace("$PLACEHOLDER_TEXTDATA_LOCATION", "testStr").replace(
-        "$PLACEHOLDER_MAPPING",
-        JSON.stringify(testEscaped.decodeMap)
-      )
+    "b",
+    "u",
+    DECODER_BIG.replace("$PLACEHOLDER_MAPPING", "u")
   );
 
   let res;
 
-  res = smallDec(testStr);
+  res = smallDec(testStr, testEscaped.decodeMap);
   compareArrays(testData, res);
 
-  res = bigDec(testStr);
+  res = bigDec(testStr, testEscaped.decodeMap);
   compareArrays(testData, res);
 });
 

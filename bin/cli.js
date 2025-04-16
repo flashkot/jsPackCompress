@@ -41,8 +41,9 @@ program
     "how content of extra files should be returned. Options include: `ArrayBuffer`, `Uint8Array`, `String`, `Blob`, or `BlobURL`. Use `all` to have all types as properties of the wrapper argument",
     "all"
   )
-  .option("-s, --small-decoder", "Always use small decoder")
-  .option("-c, --compact-html", "Generate compact HTM.")
+  .option("-s, --small-decoder", "always use small decoder")
+  .option("-u, --universal-decoder", "use universal decoder")
+  .option("-c, --compact-html", "generate compact HTML")
   .option(
     "-e, --extra-head <string>",
     "additional string to include in the <HEAD> section"
@@ -125,6 +126,7 @@ let result = await pack({
   accessType: opts.getter,
   useSmallDecoder: opts.smallDecoder,
   compactHtml: opts.compactHtml,
+  universalDecoder: opts.universalDecoder,
   extraHead: opts.extraHead,
   extraBody: opts.extraBody,
   files: filesContent,

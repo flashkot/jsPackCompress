@@ -103,7 +103,9 @@ export function binEscape(data) {
 
   // prepare mapping for decoder
   let decodeMap = {};
+  let swapMap = {};
   mapping.forEach((c, i) => {
+    if (c != i) swapMap[c] = i;
     c = ISO_TO_UTF[c] ?? c;
     if (c != i) decodeMap[c] = i;
   });
@@ -111,5 +113,6 @@ export function binEscape(data) {
   return {
     payload,
     decodeMap,
+    swapMap,
   };
 }

@@ -27,6 +27,10 @@ and then see content instantly without delay and page freeze.
 So this tool is a curiosity better suited for niche projects or stuff like
 demoscene or game jams like [js13kgames](https://js13kgames.com/).
 
+> [!NOTE]
+> If you still want to publish packed file on the web, read about
+> [`--universal-decoder`](#--universal-decoder) option.
+
 ### Install
 
 From NPM for use as a [command line app](#command-line-usage):
@@ -64,7 +68,8 @@ Options:
                              all types as properties of the wrapper argument
                              (default: "all")
   -s, --small-decoder        Always use small decoder
-  -c, --compact-html         Generate compact HTM.
+  -u, --universal-decoder    Use universal decoder
+  -c, --compact-html         Generate compact HTML
   -e, --extra-head <string>  additional string to include in the <HEAD> section
   -b, --extra-body <string>  additional string to include in the <BODY> section
   -V, --version              output the version number
@@ -94,7 +99,7 @@ variable in your code, or if you want to save some extra bytes, you can change
 name of this variable with `--arg-name`. Next section describes how to use this
 argument to get files content.
 
-> [!NOTE]
+> [!CAUTION]
 > No checks are made that value provided with `--arg-name` is valid
 > variable name in JavaScript.
 
@@ -193,6 +198,22 @@ image in the HTML, you can use `--compact-html` which will reduce it to this:
 
 This can save you 35 bytes.
 
+### `--universal-decoder`
+
+Default decoders **require** that HTML file is parsed by browser with
+`iso-8859-15` charset.
+
+While proper charset is set in `<meta charset` tag in the wrapping HTML, it can
+be overriden by `Content-Type` header from HTTP server. This means that if you
+want to put packed file on the web, you must properly setup the server too.
+
+If server configuration can't be changed, you can use this option to generate
+file with universal decoder. This will add around 200 bytes to wrapper HTML.
+
+Waht it does is check if file was opened not from `file:` protocol. In that case
+it will `fetch` file again (hopefully this time browwser will use cached
+version) and then decode its content instead of the embeded string.
+
 ## Using from code
 
 If installed as package dependency, you can use jsPackCompress like this:
@@ -220,7 +241,7 @@ let result = await pack({
 ```
 
 > [!NOTE]
-> `pack` function is asynchronous so use `await` or `.then()`.
+> Function `pack` is asynchronous. Use `await` or `.then()`.
 
 There are two extras in config object when compared to cli:
 
