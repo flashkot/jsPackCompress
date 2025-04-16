@@ -10,7 +10,7 @@ export const GETTER = {
 export const DECODER_SMALL =
   "let c=0,e=0,d=[],a;for(;c<b.length;)a=b.charCodeAt(c++),92==a&&(a=b.charCodeAt(c++),a=114==a?13:a),d[e++]=$PLACEHOLDER_MAPPING[a]??a;return new Uint8Array(d)";
 export const DECODER_BIG =
-  "let a,f=0,d=[],c,e=[];for(a=7E4;0<a;--a)e[a]=$PLACEHOLDER_MAPPING[a]??a;for(;a<b.length;)c=b.charCodeAt(a++),92==c&&(c=b.charCodeAt(a++),c=114==c?13:c),d[f++]=e[c];return new Uint8Array(d)";
+  "let a=7E4,f=0,d=[],c,e=[];for(;0<a;)e[--a]=$PLACEHOLDER_MAPPING[a]??a;for(;a<b.length;)c=b.charCodeAt(a++),92==c&&(c=b.charCodeAt(a++),c=114==c?13:c),d[f++]=e[c];return new Uint8Array(d)";
 
 export const WRAPPER_DEFAULT =
   "(new Response((new Blob([(b=>{$PLACEHOLDER_DECODER_LOCATION})($PLACEHOLDER_TEXTDATA_LOCATION)])).stream().pipeThrough(new DecompressionStream('deflate-raw'))))$PLACEHOLDER_EXECUTOR_LOCATION";
